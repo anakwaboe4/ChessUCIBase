@@ -9,12 +9,17 @@ namespace ChessUCIBase
         string CountryName = "<your country>";      // enter the name of your country here
         int DefaultHashsize = 128;                  // set here the default hash size wanted
         bool NullMove = true;                       // set here for nullmovesupport
+        bool DebugMode = false;
+        
         //temp code
         public static void Main(string[] args)
         {
             UCI uci = new UCI();
             uci.runUCI();
         }
+
+
+
         public void runUCI()
         {
             string command = Console.ReadLine();
@@ -28,7 +33,15 @@ namespace ChessUCIBase
                     Console.WriteLine("option name Nullmove type check default " + NullMove);
                     Console.WriteLine("uciok");
                     break;
-                //case ""
+                case "debug on":
+                    DebugMode = true;
+                    break;
+                case "debug off":
+                    DebugMode = false;
+                    break;
+                case "isready":
+                    Console.WriteLine("readyok");
+                    break;
             }
         }
     }
